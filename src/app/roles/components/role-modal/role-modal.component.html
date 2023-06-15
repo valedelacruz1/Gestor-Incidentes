@@ -1,0 +1,59 @@
+<div
+  class="modal fade"
+  id="Modal"
+  tabindex="-1"
+  aria-labelledby="Modal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 *ngIf="RoleInput" class="modal-title fs-5" id="exampleModalLabel">
+          Editar {{ RoleInput.rol_nombre }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="cerrarModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h2>Formulario</h2>
+
+        <form
+          [formGroup]="miFormulario"
+          (ngSubmit)="onSubmit()"
+          autocomplete="off"
+        >
+          <label class="form-label" for="nombre">Nombre Role:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="rol_nombre"
+            formControlName="rol_nombre"
+            required
+          />
+
+          <label class="form-label" for="descripcion">Descripcion:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="rol_descripcion"
+            formControlName="rol_descripcion"
+            required
+          />
+
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()">
+          Enviar Solicitud
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

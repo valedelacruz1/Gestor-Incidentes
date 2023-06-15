@@ -1,0 +1,41 @@
+<div class="col animate__animated animate__fadeIn">
+  <div class="container">
+
+
+    <div class="col">
+      <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="login()">
+        <div class="mb-3 form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="usuarioLabel"
+            aria-describedby="emailHelp"
+            formControlName="username"
+            placeholder="Usuario"
+          />
+          <label for="usuarioLabel" class="form-label">Usuario</label>
+        </div>
+        <div class="mb-3 form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="passwordLabel"
+            formControlName="password"
+            placeholder="Ingrese su Contraseña"
+          />
+          <label for="passwordLabel" class="form-label">Contraseña</label>
+        </div>
+
+        <div class="d-grid gap-2">
+          <button
+            class="btn btn-primary btn-lg btn-block"
+            type="submit"
+            [disabled]="miFormulario.invalid"
+          >
+            Ingresar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

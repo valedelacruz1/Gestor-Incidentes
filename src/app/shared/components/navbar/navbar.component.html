@@ -1,0 +1,80 @@
+<nav class="d-none d-sm-block navbar navbar-light backgroundColor p-0">
+  <div class="container-fluid justify-content-between p-2">
+    <span class="text-dark">Hola {{ user.nombre }} {{ user.apellido }}</span>
+
+    <a class="navbar-brand"> SISTEMA GESTOR DE INCIDENTES </a>
+
+    <button class="btn btn-danger" (click)="logOut()">
+      Cerrar Sesion
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link disabled">Disabled</a>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+<!-- OFFCANVAS -->
+
+<nav class="d-block d-sm-none navbar navbar-light backgroundColor">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand fs-6">SISTEMA GESTOR DE INCIDENTES</a>
+
+    <!-- contenido -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header p-1">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+          SISTEMA GESTOR DE INCIDENTES
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body pt-2 p-0">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>
+</nav>

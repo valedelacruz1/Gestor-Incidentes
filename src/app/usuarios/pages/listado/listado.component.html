@@ -1,0 +1,93 @@
+<div class="container-fluid p-0 m-0">
+  <div
+    class="row d-flex justify-content-around m-0 p-0 animate__animated animate__fadeIn"
+  >
+    <div class="col p-2">
+      <button
+        type="button"
+        class="btn btn-primary rounded-circle btnCustom"
+        data-bs-toggle="modal"
+        data-bs-target="#Modal"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="col d-flex justify-content-end p-2">
+      <!-- <button type="button" class="btn btn-success btn-sm">
+        <i
+          class="fa fa-file-excel-o"
+          aria-hidden="true"
+
+        ></i>
+        Generar Excel
+      </button> -->
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table
+      class="table table-bordered table-hover text-center animate__animated animate__fadeIn"
+    >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">nombre</th>
+          <th scope="col">apellido</th>
+          <th scope="col">correo</th>
+          <th scope="col">dependencia</th>
+          <th scope="col">telefono</th>
+          <th scope="col">numDocumento</th>
+          <th scope="col">role</th>
+
+          <th scope="col">Fecha Creacion</th>
+          <th scope="col">Fecha Actualizacion</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody class="animate__animated animate__fadeIn">
+        <tr
+          *ngFor="let usuario of usuarios"
+          class="animate__animated animate__fadeIn"
+        >
+          <th scope="row">{{ usuario.id }}</th>
+          <td>{{ usuario.nombre | titlecase }}</td>
+          <td>{{ usuario.apellido }}</td>
+          <td>{{ usuario.correo }}</td>
+          <td>{{ usuario.dependencia }}</td>
+          <td>{{ usuario.telefono }}</td>
+          <td>{{ usuario.numDocumento }}</td>
+          <td>{{ usuario.role }}</td>
+          <td>{{ usuario.createdAt | date }}</td>
+          <td>{{ usuario.updatedAt | date }}</td>
+          <td>
+            <div class="d-flex justify-content-center align-content-center">
+              <button
+                type="button"
+                class="btn btn-warning btn-sm me-1"
+                (click)="editarIncidente(usuario)"
+                data-bs-toggle="modal"
+                data-bs-target="#Modal"
+              >
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm me-1"
+                (click)="eliminarIncidente(usuario)"
+              >
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-usuarioModal
+    [UsuarioInput]="usuarioSeleccionado"
+    (modalOff)="onCloseModal($event)"
+  ></app-usuarioModal>
+</div>

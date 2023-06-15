@@ -1,0 +1,42 @@
+/* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+} */
+/*
+#titulo {
+  flex-grow: 1;
+  text-align: center;
+  align-items: center;
+} */
+
+/* .navbar-brand {
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  background-position: top center;
+} */
+
+.backgroundColor {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+/* .btn-salir{
+    background: url("../../../../assets//img/salir.png");
+    padding: 25px 25px;
+    border: none;
+} */
+
+/* .btn-salir:hover {
+  background-color: #567ff8a8;
+  border-radius: 50%;
+} */
+
+.offcanvas {
+  max-width: 60% !important;
+}
+
+h5 {
+  margin: 0 !important;
+}

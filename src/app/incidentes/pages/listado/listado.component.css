@@ -1,0 +1,32 @@
+/* Estilos para la tabla */
+/* table {
+    border-collapse: collapse;
+    width: 100%;
+
+  } */
+
+/* th,
+  td {
+    text-align: left;
+    padding: 8px;
+    color: white;
+  } */
+
+/* th {
+    background-color: #4caf50;
+    color: white;
+  } */
+
+.btn {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.fa {
+  margin-right: 10px;
+}
+body{
+  margin: 0px !important;
+}

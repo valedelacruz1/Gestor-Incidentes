@@ -1,0 +1,51 @@
+<div #myModal id="myModal" class="modal" tabindex="-1">
+  <div class="modal-content">
+    <span class="close-button"data-bs-toggle="modal" (click)="cerrarModal()">&times;</span>
+
+    <h2>Formulario</h2>
+
+    <form
+      autocomplete="off"
+      [formGroup]="miFormulario"
+      (ngSubmit)="agregarFila()"
+      >
+      <!-- id="myForm" -->
+      <label class="form-label" for="nombre">Nombre Incidente:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="nombre"
+        formControlName="nombre"
+        required
+      />
+
+      <label class="form-label" for="correo">Descripcion:</label>
+      <input
+        class="form-control"
+        type="text"
+        id="descripcion"
+        formControlName="descripcion"
+        required
+      />
+      <!-- inc_usuario quien me crea el incidente -->
+
+      <label for="opciones">Tipo de Solicitud(Tipo Incidente):</label>
+      <select
+        class="form-select"
+        id="opciones"
+        formControlName="tipoIncidente"
+        required
+      >
+        <option value="">Seleccionar opción</option>
+        <option *ngFor="let tipoIncidente of TipoIncidentes" [value]="tipoIncidente.id">
+          {{ tipoIncidente.tinc_nombre }}
+        </option>
+        <!-- <option value="opcion1">Opción 1</option>
+        <option value="opcion2">Opción 2</option>
+        <option value="opcion3">Opción 3</option> -->
+      </select>
+
+      <input class="btn btn-primary" type="submit" value="Enviar Solicitud" />
+    </form>
+  </div>
+</div>

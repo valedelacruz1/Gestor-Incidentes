@@ -1,0 +1,101 @@
+<div class="container-fluid p-0 m-0 ">
+
+  <div class="row m-0 p-0 bg-warning">
+
+    <div *ngFor="let item of infoIncidentesCard" class="col">
+      <incidentes-card-info  [EstadoIncidenteInput]="item.estadoIncidente" [Estado]="item.estado" [ColorTarjeta]="item.color"/>
+    </div>
+
+
+  </div>
+  <div class="row d-flex justify-content-around m-0 p-0 animate__animated animate__fadeIn ">
+    <div class="col p-2">
+      <h3>Incidentes</h3>
+      <button *ngIf="!esAdmin"
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#Modal"
+        (click)="crearIncidente()"
+      >
+      <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="col d-flex justify-content-end p-2">
+      <!-- <button type="button" class="btn btn-success btn-sm">
+        <i
+          class="fa fa-file-excel-o"
+          aria-hidden="true"
+
+        ></i>
+        Generar Excel
+      </button> -->
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center animate__animated animate__fadeIn ">
+      <thead>
+        <tr class="animate__animated animate__fadeIn">
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripcion</th>
+          <th *ngIf="esAdmin" scope="col">Usuario</th>
+          <th *ngIf="esAdmin" scope="col">Correo</th>
+          <th *ngIf="esAdmin" scope="col">Telefono</th>
+          <th scope="col">Usuario Revision</th>
+          <th scope="col">Tipo </th>
+          <th scope="col">Estado </th>
+          <th scope="col">Fecha Creacion</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody  >
+        <tr *ngFor="let incidente of incidentes" class="animate__animated animate__fadeIn " >
+          <th scope="row">{{ incidente.id }}</th>
+          <td>{{ incidente.inc_nombre | titlecase }}</td>
+          <td>{{ incidente.inc_descripcion }}</td>
+          <td *ngIf="esAdmin" >{{ incidente.inc_usuario.nombre  }}</td>
+          <td *ngIf="esAdmin" >{{ incidente.inc_usuario.correo  }}</td>
+          <td *ngIf="esAdmin" >{{ incidente.inc_usuario.telefono  }}</td>
+          <td >{{ incidente| revisionAdmin  }}</td>
+          <td>{{ incidente.inc_tipoIncidente.tinc_nombre }}</td>
+          <td>{{ incidente.inc_estadoIncidente.est_nombre }}</td>
+          <td>{{ incidente.createdAt | date }}</td>
+          <td>
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-warning btn-sm"
+                (click)="editarIncidente(incidente)"
+                data-bs-toggle="modal"
+                data-bs-target="#Modal"
+              >
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                (click)="eliminarIncidente(incidente)"
+              >
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <app-incidenteModal
+    [IncidenteInput]="incidenteSeleccionado"
+    [BDIncidente]="BDIncidente"
+    (closeModal)="onCloseModal($event)"
+  ></app-incidenteModal>
+</div>

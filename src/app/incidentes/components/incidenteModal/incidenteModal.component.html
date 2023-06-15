@@ -1,0 +1,150 @@
+<div
+  class="modal fade"
+  id="Modal"
+  tabindex="-1"
+  aria-labelledby="Modal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1
+          *ngIf="OnIncidente"
+          class="modal-title fs-5 m-0"
+          id="exampleModalLabel"
+        >
+          Editar Incidente
+        </h1>
+        <h1
+          *ngIf="OnIncidente === false"
+          class="modal-title fs-5 m-0"
+          id="exampleModalLabel"
+        >
+          Registrar Incidente
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="cerrarModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="miFormulario"
+          (ngSubmit)="onSubmit()"
+          autocomplete="off"
+        >
+          <div class="row mb-3">
+            <div *ngIf="OnIncidente" class="col p-0">
+              <div class="form-floating">
+                <input
+                  class="form-control-plaintext"
+                  type="text"
+                  id="id"
+                  formControlName="id"
+                  required
+                />
+                <label class="form-label" for="nombre">Id Incidente:</label>
+              </div>
+            </div>
+            <div class="col p-0">
+              <div class="form-floating">
+                <input
+                  class="form-control-plaintext"
+                  type="text"
+                  id="usuarioNombre"
+                  formControlName="usuarioNombre"
+                  required
+                />
+                <label class="form-label" for="usuarioNombre">
+                  Nombre de Usuario</label
+                >
+              </div>
+            </div>
+            <div class="col p-0">
+              <div class="form-floating">
+                <input
+                  class="form-control-plaintext"
+                  type="text"
+                  id="iusuarioCorreo"
+                  formControlName="usuarioCorreo"
+                  required
+                />
+                <label class="form-label" for="usuarioCorreo"
+                  >Correo del Usuario</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 form-floating">
+            <input
+              class="form-control"
+              type="text"
+              id="nombre"
+              formControlName="nombre"
+              required
+            />
+            <label class="form-label" for="nombre">Nombre Incidente:</label>
+          </div>
+          <div class="mb-3 form-floating">
+            <select
+              class="form-select"
+              id="tipoIncidenteId"
+              formControlName="tipoIncidenteId"
+              required
+            >
+              <option value="">Seleccionar opción</option>
+              <option
+                *ngFor="let tipoIncidente of TipoIncidentes"
+                [value]="tipoIncidente.id"
+              >
+                {{ tipoIncidente.tinc_nombre }}
+              </option>
+            </select>
+            <label for="tipoIncidente">Tipo Incidente:</label>
+          </div>
+
+          <div class="mb-3 form-floating">
+            <select
+              *ngIf="esAdmin"
+              class="form-select"
+              id="estadoIncidenteId"
+              formControlName="estadoIncidenteId"
+              required>
+              <option value="">Seleccionar opción</option>
+              <option
+                *ngFor="let estadoIncidente of EstadoIncidentes"
+                [value]="estadoIncidente.id"
+              >
+                {{ estadoIncidente.est_nombre }}
+              </option>
+            </select>
+            <label *ngIf="esAdmin" for="estadoIncidenteId"
+              >Estado Incidente:</label
+            >
+          </div>
+
+          <div class="mb-3 form-floating">
+            <textarea
+              class="form-control"
+              id="descripcion"
+              rows="3"
+              formControlName="descripcion"
+              required
+            ></textarea>
+            <label class="form-label" for="descripcion">Descripcion:</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="miFormulario.invalid">
+          <span *ngIf="OnIncidente">Actualizar</span>
+          <span *ngIf="OnIncidente === false">Registrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
